@@ -30,6 +30,7 @@ public class ContactDTO implements Dto {
   public Contact toModel() {
     return Contact
         .builder()
+        .id(id)
         .contactType(contactType)
         .deleted(deleted)
         .value(value)

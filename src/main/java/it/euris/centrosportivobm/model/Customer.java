@@ -38,7 +38,7 @@ public class Customer implements Model {
   private String taxCode;
 
   @Override
-  public Dto toDto() {
+  public CustomerDTO toDto() {
     return CustomerDTO
         .builder()
         .birthDate(birthDate)

@@ -33,6 +33,7 @@ public class CustomerDTO implements Dto {
   public Customer toModel() {
     return Customer
         .builder()
+        .id(id)
         .birthDate(birthDate)
         .deleted(deleted)
         .name(name)

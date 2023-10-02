@@ -31,6 +31,7 @@ public class CourseDTO implements Dto {
   public Course toModel() {
     return Course
         .builder()
+        .id(id)
         .deleted(deleted)
         .denomination(denomination)
         .difficulty(difficulty)
