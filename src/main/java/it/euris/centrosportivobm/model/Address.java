@@ -46,6 +46,7 @@ public class Address implements Model {
   public AddressDTO toDto() {
     return AddressDTO
         .builder()
+        .id(id)
         .address(address)
         .city(city)
         .deleted(deleted)

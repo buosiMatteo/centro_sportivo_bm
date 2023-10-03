@@ -41,6 +41,7 @@ public class Customer implements Model {
   public CustomerDTO toDto() {
     return CustomerDTO
         .builder()
+        .id(id)
         .birthDate(birthDate)
         .deleted(deleted)
         .name(name)
