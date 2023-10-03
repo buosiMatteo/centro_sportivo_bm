@@ -1,8 +1,7 @@
-package it.euris.centrosportivobm.model;
+package it.euris.centrosportivobm.data.model;
 
-import it.euris.centrosportivobm.dto.ContactDTO;
-import it.euris.centrosportivobm.dto.archetype.Dto;
-import it.euris.centrosportivobm.dto.archetype.Model;
+import it.euris.centrosportivobm.data.dto.ContactDTO;
+import it.euris.centrosportivobm.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 

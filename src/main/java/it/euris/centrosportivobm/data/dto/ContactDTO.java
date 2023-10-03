@@ -1,12 +1,7 @@
-package it.euris.centrosportivobm.dto;
+package it.euris.centrosportivobm.data.dto;
 
-import it.euris.centrosportivobm.dto.archetype.Dto;
-import it.euris.centrosportivobm.dto.archetype.Model;
-import it.euris.centrosportivobm.model.Contact;
-import it.euris.centrosportivobm.model.Customer;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import it.euris.centrosportivobm.data.dto.archetype.Dto;
+import it.euris.centrosportivobm.data.model.Contact;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,9 +1,7 @@
-package it.euris.centrosportivobm.dto;
+package it.euris.centrosportivobm.data.dto;
 
-import it.euris.centrosportivobm.dto.archetype.Dto;
-import it.euris.centrosportivobm.dto.archetype.Model;
-import it.euris.centrosportivobm.model.Course;
-import jakarta.persistence.Column;
+import it.euris.centrosportivobm.data.dto.archetype.Dto;
+import it.euris.centrosportivobm.data.model.Course;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

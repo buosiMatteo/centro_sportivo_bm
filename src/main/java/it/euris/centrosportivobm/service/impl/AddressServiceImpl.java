@@ -1,8 +1,7 @@
 package it.euris.centrosportivobm.service.impl;
 
-import it.euris.centrosportivobm.model.Address;
+import it.euris.centrosportivobm.data.model.Address;
 import it.euris.centrosportivobm.repository.AddressRepository;
-import it.euris.centrosportivobm.repository.CustomerRepository;
 import it.euris.centrosportivobm.service.AddressService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
 package it.euris.centrosportivobm.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import it.euris.centrosportivobm.dto.CustomerDTO;
-import it.euris.centrosportivobm.model.Customer;
+import it.euris.centrosportivobm.data.dto.CustomerDTO;
+import it.euris.centrosportivobm.data.model.Customer;
 import it.euris.centrosportivobm.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

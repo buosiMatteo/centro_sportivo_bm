@@ -1,6 +1,6 @@
 package it.euris.centrosportivobm.service.impl;
 
-import it.euris.centrosportivobm.model.Contact;
+import it.euris.centrosportivobm.data.model.Contact;
 import it.euris.centrosportivobm.repository.ContactRepository;
 import it.euris.centrosportivobm.service.ContactService;
 import lombok.AllArgsConstructor;

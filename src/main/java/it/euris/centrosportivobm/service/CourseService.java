@@ -1,7 +1,6 @@
 package it.euris.centrosportivobm.service;
 
-import it.euris.centrosportivobm.model.Course;
-import it.euris.centrosportivobm.model.Customer;
+import it.euris.centrosportivobm.data.model.Course;
 
 import java.util.List;
 
