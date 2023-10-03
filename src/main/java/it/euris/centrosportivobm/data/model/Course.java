@@ -2,6 +2,7 @@ package it.euris.centrosportivobm.data.model;
 
 import it.euris.centrosportivobm.data.dto.CourseDTO;
 import it.euris.centrosportivobm.data.dto.archetype.Model;
+import it.euris.centrosportivobm.data.enums.SportType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,7 +32,8 @@ public class Course implements Model {
   private Double price;
 
   @Column(name = "sport")
-  private String sport;
+  @Enumerated(EnumType.STRING)
+  private SportType sport;
 
   @Override
   public CourseDTO toDto() {

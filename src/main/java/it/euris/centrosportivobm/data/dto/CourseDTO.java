@@ -1,6 +1,7 @@
 package it.euris.centrosportivobm.data.dto;
 
 import it.euris.centrosportivobm.data.dto.archetype.Dto;
+import it.euris.centrosportivobm.data.enums.SportType;
 import it.euris.centrosportivobm.data.model.Course;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +24,7 @@ public class CourseDTO implements Dto {
 
   private Double price;
 
-  private String sport;
+  private SportType sport;
 
   @Override
   public Course toModel() {
