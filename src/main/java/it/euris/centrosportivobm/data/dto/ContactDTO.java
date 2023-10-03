@@ -7,17 +7,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class ContactDTO implements Dto {
 
-  private Long id;
+  private String id;
 
   private String contactType;
 
-  private Boolean deleted;
+  private String deleted;
 
   private String value;
 
@@ -25,9 +27,9 @@ public class ContactDTO implements Dto {
   public Contact toModel() {
     return Contact
         .builder()
-        .id(id)
+        .id(stringToLong(id))
         .contactType(contactType)
-        .deleted(deleted)
+        .deleted(stringToBoolean(deleted))
         .value(value)
         .build();
   }

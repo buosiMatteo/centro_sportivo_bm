@@ -5,6 +5,9 @@ import it.euris.centrosportivobm.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
+import static it.euris.centrosportivobm.utility.DataConversionUnit.numberToString;
+
 @Builder
 @Getter
 @Setter
@@ -36,9 +39,9 @@ public class Contact implements Model {
   public ContactDTO toDto() {
     return ContactDTO
         .builder()
-        .id(id)
+        .id(numberToString(id))
         .contactType(contactType)
-        .deleted(deleted)
+        .deleted(booleanToString(deleted))
         .value(value)
         .build();
   }

@@ -7,6 +7,8 @@ import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
+
 @Builder
 @Getter
 @Setter
@@ -37,7 +39,7 @@ public class CustomerCourse implements Model {
     return CustomerCourseDTO
         .builder()
         .id(id)
-        .deleted(deleted)
+        .deleted(booleanToString(deleted))
         .build();
   }
 }

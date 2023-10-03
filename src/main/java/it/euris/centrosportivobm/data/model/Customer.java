@@ -7,6 +7,8 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Builder
 @Getter
 @Setter
@@ -40,9 +42,9 @@ public class Customer implements Model {
   public CustomerDTO toDto() {
     return CustomerDTO
         .builder()
-        .id(id)
-        .birthDate(birthDate)
-        .deleted(deleted)
+        .id(numberToString(id))
+        .birthDate(localDateTimeToString(birthDate))
+        .deleted(booleanToString(deleted))
         .name(name)
         .surname(surname)
         .taxCode(taxCode)

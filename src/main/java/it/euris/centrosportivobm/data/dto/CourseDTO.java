@@ -8,34 +8,36 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CourseDTO implements Dto {
 
-  private Long id;
+  private String id;
 
-  private Boolean deleted;
+  private String deleted;
 
   private String denomination;
 
   private String difficulty;
 
-  private Double price;
+  private String price;
 
-  private SportType sport;
+  private String sport;
 
   @Override
   public Course toModel() {
     return Course
         .builder()
-        .id(id)
-        .deleted(deleted)
+        .id(stringToLong(id))
+        .deleted(stringToBoolean(deleted))
         .denomination(denomination)
         .difficulty(difficulty)
-        .price(price)
-        .sport(sport)
+        .price(stringToDouble(price))
+        .sport(stringToSportType(sport))
         .build();
   }
 }

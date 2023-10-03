@@ -7,22 +7,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressDTO  implements Dto {
-  private Long id;
+  private String id;
 
   private String address;
 
   private String city;
 
-  private Boolean deleted;
+  private String deleted;
 
   private String nation;
 
-  private Integer postalCode;
+  private String postalCode;
 
   private String province;
 
@@ -30,12 +32,12 @@ public class AddressDTO  implements Dto {
   public Address toModel() {
     return Address
         .builder()
-        .id(id)
+        .id(stringToLong(id))
         .address(address)
         .city(city)
-        .deleted(deleted)
+        .deleted(stringToBoolean(deleted))
         .nation(nation)
-        .postalCode(postalCode)
+        .postalCode(stringToInteger(postalCode))
         .province(province)
         .build();
   }

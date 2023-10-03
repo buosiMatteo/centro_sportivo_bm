@@ -6,6 +6,8 @@ import it.euris.centrosportivobm.data.enums.SportType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Builder
 @Getter
 @Setter
@@ -39,12 +41,12 @@ public class Course implements Model {
   public CourseDTO toDto() {
     return CourseDTO
         .builder()
-        .id(id)
-        .deleted(deleted)
+        .id(numberToString(id))
+        .deleted(booleanToString(deleted))
         .denomination(denomination)
         .difficulty(difficulty)
-        .price(price)
-        .sport(sport)
+        .price(numberToString(price))
+        .sport(sportTypeToString(sport))
         .build();
   }
 }

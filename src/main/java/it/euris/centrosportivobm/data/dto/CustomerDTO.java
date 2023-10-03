@@ -9,17 +9,19 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerDTO implements Dto {
 
-  private Long id;
+  private String id;
 
-  private LocalDateTime birthDate;
+  private String birthDate;
 
-  private Boolean deleted;
+  private String deleted;
 
   private String name;
 
@@ -31,9 +33,9 @@ public class CustomerDTO implements Dto {
   public Customer toModel() {
     return Customer
         .builder()
-        .id(id)
-        .birthDate(birthDate)
-        .deleted(deleted)
+        .id(stringToLong(id))
+        .birthDate(stringToLocalDateTime(birthDate))
+        .deleted(stringToBoolean(deleted))
         .name(name)
         .surname(surname)
         .taxCode(taxCode)

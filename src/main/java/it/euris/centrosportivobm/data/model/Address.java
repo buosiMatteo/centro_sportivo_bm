@@ -5,6 +5,9 @@ import it.euris.centrosportivobm.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
+import static it.euris.centrosportivobm.utility.DataConversionUnit.numberToString;
+
 @Builder
 @Getter
 @Setter
@@ -45,12 +48,12 @@ public class Address implements Model {
   public AddressDTO toDto() {
     return AddressDTO
         .builder()
-        .id(id)
+        .id(numberToString(id))
         .address(address)
         .city(city)
-        .deleted(deleted)
+        .deleted(booleanToString(deleted))
         .nation(nation)
-        .postalCode(postalCode)
+        .postalCode(numberToString(postalCode))
         .province(province)
         .build();
   }

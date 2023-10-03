@@ -1,5 +1,6 @@
 package it.euris.centrosportivobm.controller;
 
+import it.euris.centrosportivobm.data.enums.SportType;
 import it.euris.centrosportivobm.data.model.Course;
 import it.euris.centrosportivobm.service.CourseService;
 import org.junit.jupiter.api.Test;
@@ -34,7 +35,7 @@ class CourseControllerTest {
         .denomination("Squad game")
         .difficulty("Medium")
         .price(80.00)
-        .sport("Basket")
+        .sport(SportType.BASKET)
         .build();
 
     List<Course> courses = List.of(course);
