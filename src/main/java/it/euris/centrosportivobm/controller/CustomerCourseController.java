@@ -2,8 +2,6 @@ package it.euris.centrosportivobm.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import it.euris.centrosportivobm.data.dto.CustomerCourseDTO;
-import it.euris.centrosportivobm.data.dto.CustomerDTO;
-import it.euris.centrosportivobm.data.model.Customer;
 import it.euris.centrosportivobm.data.model.CustomerCourse;
 import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
 import it.euris.centrosportivobm.service.CustomerCourseService;

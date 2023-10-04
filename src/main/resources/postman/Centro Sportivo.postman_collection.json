@@ -176,6 +176,217 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{address}}/{{version}}/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{address}}",
+								"{{version}}",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Get All Courses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{course}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{course}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deleted\": false,\n    \"denomination\": \"Squad game\",\n    \"difficulty\": \"medium\",\n    \"price\": \"90.00\",\n    \"sport\": \"Tennis\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{course}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{course}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"deleted\": false,\n    \"denomination\": \"Squad game\",\n    \"difficulty\": \"easy\",\n    \"price\": \"80.00\",\n    \"sport\": \"Basket\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{course}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{course}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{course}}/{{version}}/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{course}}",
+								"{{version}}",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact",
+			"item": [
+				{
+					"name": "Get All Contact",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{contact}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contact}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"contactType\": \"email\",\n  \"deleted\": false,\n  \"value\": \"annaneri@testmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contact}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contact}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"contactType\": \"email\",\n    \"deleted\": \"false\",\n    \"value\": \"annaneri@testmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{contact}}/{{version}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contact}}",
+								"{{version}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/{{contact}}/{{version}}/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{contact}}",
+								"{{version}}",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
