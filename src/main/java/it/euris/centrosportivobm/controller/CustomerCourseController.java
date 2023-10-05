@@ -12,7 +12,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/customers_course")
+@RequestMapping("/customers_courses")
 public class CustomerCourseController {
 
   CustomerCourseService customerCourseService;
@@ -38,12 +38,12 @@ public class CustomerCourseController {
     return customerCourseService.save(customerCourse).toDto();
   }
 
-  @DeleteMapping("/v1/{id}")
+  @DeleteMapping("/v1/{id1}-{id2}")
   public void deleteCustomer(@PathVariable("id") CustomerCourseKey idCustomerCourse) {
     customerCourseService.deleteById(idCustomerCourse);
   }
 
-  @GetMapping("/v1/{id}")
+  @GetMapping("/v1/{id1}-{id2}")
   public CustomerCourseDTO getCustomerById(@PathVariable("id") CustomerCourseKey idCustomerCourse) {
     return customerCourseService.findById(idCustomerCourse).toDto();
   }

@@ -38,9 +38,9 @@ public class DataConversionUnit {
   }
 
   public static SportType stringToSportType(String value) {
-    for (SportType shipmentTypeValue : SportType.values()) {
-      if (shipmentTypeValue.name().equalsIgnoreCase(value))
-        return shipmentTypeValue;
+    for (SportType sportTypeValue : SportType.values()) {
+      if (sportTypeValue.name().equalsIgnoreCase(value))
+        return sportTypeValue;
     }
     return null;
   }
