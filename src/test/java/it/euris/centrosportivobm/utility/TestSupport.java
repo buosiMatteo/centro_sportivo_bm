@@ -1,6 +1,7 @@
 package it.euris.centrosportivobm.utility;
 
 import it.euris.centrosportivobm.data.enums.SportType;
+import it.euris.centrosportivobm.data.model.Address;
 import it.euris.centrosportivobm.data.model.Course;
 import it.euris.centrosportivobm.data.model.Customer;
 
@@ -29,6 +30,18 @@ public class TestSupport {
         .name("Test name")
         .surname("Test surname")
         .taxCode("Test tax code")
+        .build();
+  }
+
+  public static Address getAddress(long id) {
+    return Address
+        .builder()
+        .address("Via Roma 17")
+        .city("Milano")
+        .deleted(false)
+        .nation("Italy")
+        .postalCode(20061)
+        .province("MI")
         .build();
   }
 }

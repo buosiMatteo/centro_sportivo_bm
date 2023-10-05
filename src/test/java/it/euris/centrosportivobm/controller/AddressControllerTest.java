@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import it.euris.centrosportivobm.config.security.SecurityConf;
 import it.euris.centrosportivobm.data.model.Address;
 import it.euris.centrosportivobm.service.AddressService;
+import it.euris.centrosportivobm.utility.TestSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -41,15 +42,7 @@ class AddressControllerTest {
   @Test
   public void shouldGetOneAddress() throws Exception {
 
-    Address address = Address
-        .builder()
-        .address("Via Roma 17")
-        .city("Milano")
-        .deleted(false)
-        .nation("Italy")
-        .postalCode(20061)
-        .province("MI")
-        .build();
+    Address address = TestSupport.getAddress(2L);
 
     List<Address> addresses = List.of(address);
 
@@ -66,17 +59,10 @@ class AddressControllerTest {
 
   @Test
   public void shouldSaveAnAddress() throws Exception {
-    Address address = Address
-        .builder()
-        .address("Via Roma 17")
-        .city("Milano")
-        .deleted(false)
-        .nation("Italy")
-        .postalCode(20061)
-        .province("MI")
-        .build();
 
-    when(addressService.insert(address)).thenReturn(address);
+    Address address = TestSupport.getAddress(2L);
+
+    when(addressService.insert(any())).thenReturn(address);
 
     String auth = Base64.getEncoder().encodeToString(("admin:admin").getBytes());
 
@@ -93,19 +79,11 @@ class AddressControllerTest {
   @Test
   void shouldReturnForbiddenWhenUserAuthenticated() throws Exception {
 
-    Address address = Address
-        .builder()
-        .address("Via Roma 17")
-        .city("Milano")
-        .deleted(false)
-        .nation("Italy")
-        .postalCode(20061)
-        .province("MI")
-        .build();;
+    Address address = TestSupport.getAddress(2L);
 
     when(addressService.insert(any())).thenReturn(address);
 
-    String auth = Base64.getEncoder().encodeToString(("user:user").getBytes());
+    String auth = Base64.getEncoder().encodeToString(("visitor:visitor").getBytes());
 
     mockMvc.perform(MockMvcRequestBuilders.post("/customers/v1")
             .header(HttpHeaders.AUTHORIZATION, "Basic " + auth)

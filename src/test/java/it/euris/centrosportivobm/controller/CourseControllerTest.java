@@ -1,12 +1,16 @@
 package it.euris.centrosportivobm.controller;
 
+import it.euris.centrosportivobm.config.security.SecurityConf;
 import it.euris.centrosportivobm.data.enums.SportType;
 import it.euris.centrosportivobm.data.model.Course;
 import it.euris.centrosportivobm.service.CourseService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -17,7 +21,9 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(CourseController.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+@Import(value = { SecurityConf.class })
 class CourseControllerTest {
 
   @Autowired
