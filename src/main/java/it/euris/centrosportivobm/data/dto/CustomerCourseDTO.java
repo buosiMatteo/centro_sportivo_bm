@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import static it.euris.centrosportivobm.utility.DataConversionUnit.stringToBoolean;
+import static it.euris.centrosportivobm.utility.DataConversionUnit.stringToCustomerCourseKey;
 
 @Data
 @Builder
@@ -18,11 +19,7 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.stringToBoole
 @AllArgsConstructor
 public class CustomerCourseDTO implements Dto {
 
-  private CustomerCourseKey id;
-
-  private Course course;
-
-  private Customer customer;
+  private String id;
 
   private String deleted;
 
@@ -30,7 +27,7 @@ public class CustomerCourseDTO implements Dto {
   public CustomerCourse toModel() {
     return CustomerCourse
         .builder()
-        .id(id)
+        .id(stringToCustomerCourseKey(id))
         .deleted(stringToBoolean(deleted))
         .build();
   }

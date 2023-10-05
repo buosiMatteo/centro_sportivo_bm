@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
+import static it.euris.centrosportivobm.utility.DataConversionUnit.customerCourseKeyToString;
 
 @Builder
 @Getter
@@ -38,7 +39,7 @@ public class CustomerCourse implements Model {
   public CustomerCourseDTO toDto() {
     return CustomerCourseDTO
         .builder()
-        .id(id)
+        .id(customerCourseKeyToString(id))
         .deleted(booleanToString(deleted))
         .build();
   }

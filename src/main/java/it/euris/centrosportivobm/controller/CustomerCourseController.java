@@ -38,12 +38,12 @@ public class CustomerCourseController {
     return customerCourseService.save(customerCourse).toDto();
   }
 
-  @DeleteMapping("/v1/{id1}-{id2}")
+  @DeleteMapping("/v1/{idCourse}-{idCustomer}")
   public void deleteCustomer(@PathVariable("id") CustomerCourseKey idCustomerCourse) {
     customerCourseService.deleteById(idCustomerCourse);
   }
 
-  @GetMapping("/v1/{id1}-{id2}")
+  @GetMapping("/v1/{idCourse}-{idCustomer}")
   public CustomerCourseDTO getCustomerById(@PathVariable("id") CustomerCourseKey idCustomerCourse) {
     return customerCourseService.findById(idCustomerCourse).toDto();
   }

@@ -1,12 +1,15 @@
 package it.euris.centrosportivobm.utility;
 
 import it.euris.centrosportivobm.data.enums.SportType;
+import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DataConversionUnit {
 
@@ -55,5 +58,15 @@ public class DataConversionUnit {
 
   public static Boolean stringToBoolean(String value) {
     return value == null ? null : Boolean.valueOf(value);
+  }
+
+  public static String customerCourseKeyToString(CustomerCourseKey idCustomerCourse){return idCustomerCourse == null ? null : idCustomerCourse.getCourseId().toString()+"-"+idCustomerCourse.getCustomerId().toString();}
+
+  public static CustomerCourseKey stringToCustomerCourseKey(String value){
+    Pattern pattern = Pattern.compile("([0-9]+)-([0-9]+)");
+    Matcher matcher = pattern.matcher(value);
+    String idCourse = matcher.group(1);
+    String idCustomer = matcher.group(2);
+    return new CustomerCourseKey(Long.parseLong(idCourse),Long.parseLong(idCustomer));
   }
 }
