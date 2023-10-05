@@ -41,12 +41,12 @@ public class SecurityConf {
             .requestMatchers(HttpMethod.GET,"/courses/v1").permitAll()
             .requestMatchers(HttpMethod.GET,"/contacts/v1").permitAll()
             .requestMatchers(HttpMethod.GET,"/customers/v1").permitAll()
-            .requestMatchers("/address/v1/**").hasRole(UserRole.MANAGER.toString())
-            .requestMatchers("/courses/v1/**").hasRole(UserRole.MANAGER.toString())
-            .requestMatchers("/contacts/v1/**").hasRole(UserRole.MANAGER.toString())
-            .requestMatchers("/customers_courses/v1/**").hasRole(UserRole.MANAGER.toString())
-            .requestMatchers(HttpMethod.DELETE,"/customers").hasRole(UserRole.MANAGER.toString())
-            .requestMatchers("/customers").hasAnyRole(
+            .requestMatchers("/address/**").hasRole(UserRole.MANAGER.toString())
+            .requestMatchers("/courses/**").hasRole(UserRole.MANAGER.toString())
+            .requestMatchers("/contacts/**").hasRole(UserRole.MANAGER.toString())
+            .requestMatchers("/customers_courses/v1**").hasRole(UserRole.MANAGER.toString())
+            .requestMatchers(HttpMethod.DELETE,"/customers/v1").hasRole(UserRole.MANAGER.toString())
+            .requestMatchers("/customers/v1").hasAnyRole(
                 UserRole.MANAGER.toString(),
                 UserRole.USER.toString())
             .anyRequest().authenticated()

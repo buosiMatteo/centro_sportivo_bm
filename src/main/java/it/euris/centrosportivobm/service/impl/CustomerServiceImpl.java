@@ -1,6 +1,8 @@
 package it.euris.centrosportivobm.service.impl;
 
 import it.euris.centrosportivobm.data.model.Customer;
+import it.euris.centrosportivobm.exception.IdMustBeNullException;
+import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.repository.CustomerRepository;
 import it.euris.centrosportivobm.service.CustomerService;
 import lombok.AllArgsConstructor;
@@ -18,13 +20,25 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public Customer save(Customer customer) {
+  public Customer insert(Customer customer) {
+    if (customer.getId() != null){
+      throw new IdMustBeNullException();
+    }
     return customerRepository.save(customer);
   }
 
   @Override
-  public void deleteById(Long idCustomer) {
+  public Customer update(Customer customer) {
+    if (customer.getId() == null){
+      throw new IdMustNotBeNullException();
+    }
+    return customerRepository.save(customer);
+  }
+
+  @Override
+  public Boolean deleteById(Long idCustomer) {
     customerRepository.deleteById(idCustomer);
+    return customerRepository.findById(idCustomer).isEmpty();
   }
 
   @Override

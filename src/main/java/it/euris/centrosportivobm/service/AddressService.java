@@ -7,9 +7,11 @@ import java.util.List;
 public interface AddressService {
   List<Address> findAll();
 
-  Address save(Address address);
+  Address insert(Address address);
 
-  void deleteById(Long idAddress);
+  Address update(Address address);
+
+  Boolean deleteById(Long idAddress);
 
   Address findById(Long idAddress);
 }

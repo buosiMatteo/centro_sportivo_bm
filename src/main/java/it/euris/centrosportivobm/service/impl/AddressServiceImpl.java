@@ -1,6 +1,8 @@
 package it.euris.centrosportivobm.service.impl;
 
 import it.euris.centrosportivobm.data.model.Address;
+import it.euris.centrosportivobm.exception.IdMustBeNullException;
+import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.repository.AddressRepository;
 import it.euris.centrosportivobm.service.AddressService;
 import lombok.AllArgsConstructor;
@@ -20,13 +22,25 @@ public class AddressServiceImpl implements AddressService {
   }
 
   @Override
-  public Address save(Address address) {
+  public Address insert(Address address) {
+    if (address.getId() != null) {
+      throw new IdMustBeNullException();
+    }
     return addressRepository.save(address);
   }
 
   @Override
-  public void deleteById(Long idAddress) {
+  public Address update(Address address) {
+    if (address.getId() == null) {
+      throw new IdMustNotBeNullException();
+    }
+    return addressRepository.save(address);
+  }
+
+  @Override
+  public Boolean deleteById(Long idAddress) {
     addressRepository.deleteById(idAddress);
+    return addressRepository.findById(idAddress).isEmpty();
   }
 
   @Override

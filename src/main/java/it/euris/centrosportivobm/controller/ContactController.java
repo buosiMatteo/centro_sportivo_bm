@@ -28,13 +28,13 @@ public class ContactController {
   @PostMapping("/v1")
   public ContactDTO saveCustomer(@RequestBody ContactDTO contactDTO){
     Contact contact = contactDTO.toModel();
-    return contactService.save(contact).toDto();
+    return contactService.insert(contact).toDto();
   }
 
   @PutMapping("/v1")
   public ContactDTO updateCustomer(@RequestBody ContactDTO contactDTO) {
     Contact contact = contactDTO.toModel();
-    return contactService.save(contact).toDto();
+    return contactService.insert(contact).toDto();
   }
 
   @DeleteMapping("/v1/{id}")

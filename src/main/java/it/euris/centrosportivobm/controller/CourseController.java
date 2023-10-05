@@ -28,13 +28,13 @@ public class CourseController {
   @PostMapping("/v1")
   public CourseDTO saveCustomer(@RequestBody CourseDTO courseDTO){
     Course course = courseDTO.toModel();
-    return courseService.save(course).toDto();
+    return courseService.insert(course).toDto();
   }
 
   @PutMapping("/v1")
   public CourseDTO updateCustomer(@RequestBody CourseDTO courseDTO) {
     Course course = courseDTO.toModel();
-    return courseService.save(course).toDto();
+    return courseService.insert(course).toDto();
   }
 
   @DeleteMapping("/v1/{id}")

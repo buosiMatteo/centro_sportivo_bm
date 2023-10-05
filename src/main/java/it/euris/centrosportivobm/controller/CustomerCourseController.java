@@ -29,13 +29,13 @@ public class CustomerCourseController {
   @PostMapping("/v1")
   public CustomerCourseDTO saveCustomer(@RequestBody CustomerCourseDTO customerCourseDTO){
     CustomerCourse customerCourse = customerCourseDTO.toModel();
-    return customerCourseService.save(customerCourse).toDto();
+    return customerCourseService.insert(customerCourse).toDto();
   }
 
   @PutMapping("/v1")
   public CustomerCourseDTO updateCustomer(@RequestBody CustomerCourseDTO customerCourseDTO) {
     CustomerCourse customerCourse = customerCourseDTO.toModel();
-    return customerCourseService.save(customerCourse).toDto();
+    return customerCourseService.insert(customerCourse).toDto();
   }
 
   @DeleteMapping("/v1/{idCourse}-{idCustomer}")

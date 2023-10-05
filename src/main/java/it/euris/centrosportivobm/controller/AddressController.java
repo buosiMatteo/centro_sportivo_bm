@@ -28,13 +28,13 @@ public class AddressController {
   @PostMapping("/v1")
   public AddressDTO saveCustomer(@RequestBody AddressDTO addressDTO){
     Address address = addressDTO.toModel();
-    return addressService.save(address).toDto();
+    return addressService.insert(address).toDto();
   }
 
   @PutMapping("/v1")
   public AddressDTO updateCustomer(@RequestBody AddressDTO addressDTO) {
     Address address = addressDTO.toModel();
-    return addressService.save(address).toDto();
+    return addressService.insert(address).toDto();
   }
 
   @DeleteMapping("/v1/{id}")

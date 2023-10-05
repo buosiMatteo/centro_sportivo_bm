@@ -7,9 +7,13 @@ import java.util.List;
 public interface CourseService {
   List<Course> findAll();
 
-  Course save(Course course);
+  Course insert(Course course);
 
-  void deleteById(Long idCourse);
+  Course update(Course course);
+
+  Boolean deleteById(Long idCourse);
 
   Course findById(Long idCourse);
+
+
 }

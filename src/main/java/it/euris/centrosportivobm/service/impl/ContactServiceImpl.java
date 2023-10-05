@@ -1,6 +1,9 @@
 package it.euris.centrosportivobm.service.impl;
 
 import it.euris.centrosportivobm.data.model.Contact;
+import it.euris.centrosportivobm.data.model.Course;
+import it.euris.centrosportivobm.exception.IdMustBeNullException;
+import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.repository.ContactRepository;
 import it.euris.centrosportivobm.service.ContactService;
 import lombok.AllArgsConstructor;
@@ -21,13 +24,25 @@ public class ContactServiceImpl implements ContactService {
   }
 
   @Override
-  public Contact save(Contact contact) {
+  public Contact insert(Contact contact) {
+    if (contact.getId() != null) {
+      throw new IdMustBeNullException();
+    }
     return contactRepository.save(contact);
   }
 
   @Override
-  public void deleteById(Long idContact) {
+  public Contact update(Contact contact) {
+    if (contact.getId() == null) {
+      throw new IdMustNotBeNullException();
+    }
+    return contactRepository.save(contact);
+  }
+
+  @Override
+  public Boolean deleteById(Long idContact) {
     contactRepository.deleteById(idContact);
+    return contactRepository.findById(idContact).isEmpty();
   }
 
   @Override
