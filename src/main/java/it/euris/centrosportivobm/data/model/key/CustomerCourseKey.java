@@ -7,11 +7,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Embeddable
 public class CustomerCourseKey implements Serializable {
+
+  public CustomerCourseKey(Long courseId, Long customerId) {
+    this.courseId = courseId;
+    this.customerId = customerId;
+  }
 
   @Column(name = "course_id")
   private Long courseId;
