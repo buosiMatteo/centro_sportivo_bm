@@ -60,7 +60,8 @@ public class DataConversionUnit {
     return value == null ? null : Boolean.valueOf(value);
   }
 
-  public static String customerCourseKeyToString(CustomerCourseKey idCustomerCourse){return idCustomerCourse == null ? null : idCustomerCourse.getCourseId().toString()+"-"+idCustomerCourse.getCustomerId().toString();}
+  public static String customerCourseKeyToString(CustomerCourseKey idCustomerCourse){
+    return idCustomerCourse == null ? null : idCustomerCourse.getCourseId().toString()+"-"+idCustomerCourse.getCustomerId().toString();}
 
   public static CustomerCourseKey stringToCustomerCourseKey(String value){
     Pattern pattern = Pattern.compile("([0-9]+)-([0-9]+)");

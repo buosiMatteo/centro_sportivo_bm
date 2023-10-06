@@ -1,16 +1,19 @@
 package it.euris.centrosportivobm.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.euris.centrosportivobm.data.dto.AddressDTO;
 import it.euris.centrosportivobm.data.model.Address;
 import it.euris.centrosportivobm.service.AddressService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "authentication")
 @RequestMapping("/address")
 public class AddressController {
 

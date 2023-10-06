@@ -1,6 +1,7 @@
 package it.euris.centrosportivobm.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.euris.centrosportivobm.data.dto.CustomerCourseDTO;
 import it.euris.centrosportivobm.data.model.CustomerCourse;
 import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "authentication")
 @RequestMapping("/customers_courses")
 public class CustomerCourseController {
 

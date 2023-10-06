@@ -1,6 +1,7 @@
 package it.euris.centrosportivobm.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.euris.centrosportivobm.data.dto.ContactDTO;
 import it.euris.centrosportivobm.data.model.Contact;
 import it.euris.centrosportivobm.service.ContactService;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
+@SecurityRequirement(name = "authentication")
 @RequestMapping("/contacts")
 public class ContactController {
 
