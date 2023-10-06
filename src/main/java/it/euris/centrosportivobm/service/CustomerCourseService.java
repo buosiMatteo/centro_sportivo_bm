@@ -1,7 +1,7 @@
 package it.euris.centrosportivobm.service;
 
 import it.euris.centrosportivobm.data.model.CustomerCourse;
-import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
+import it.euris.centrosportivobm.data.model.key.CourseCustomerKey;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ public interface CustomerCourseService {
 
   CustomerCourse update(CustomerCourse customerCourse);
 
-  Boolean deleteById(CustomerCourseKey idCustomerCourse);
+  Boolean deleteById(CourseCustomerKey courseCustomertId);
 
-  CustomerCourse findById(CustomerCourseKey idCustomerCourse);
+  CustomerCourse findById(CourseCustomerKey courseCustomertId);
 
 }

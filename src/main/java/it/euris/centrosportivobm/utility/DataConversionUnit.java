@@ -1,11 +1,7 @@
 package it.euris.centrosportivobm.utility;
 
 import it.euris.centrosportivobm.data.enums.SportType;
-import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import it.euris.centrosportivobm.data.model.key.CourseCustomerKey;
 
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
@@ -60,14 +56,14 @@ public class DataConversionUnit {
     return value == null ? null : Boolean.valueOf(value);
   }
 
-  public static String customerCourseKeyToString(CustomerCourseKey idCustomerCourse){
+  public static String customerCourseKeyToString(CourseCustomerKey idCustomerCourse){
     return idCustomerCourse == null ? null : idCustomerCourse.getCourseId().toString()+"-"+idCustomerCourse.getCustomerId().toString();}
 
-  public static CustomerCourseKey stringToCustomerCourseKey(String value){
+  public static CourseCustomerKey stringToCustomerCourseKey(String value){
     Pattern pattern = Pattern.compile("([0-9]+)-([0-9]+)");
     Matcher matcher = pattern.matcher(value);
     String idCourse = matcher.group(1);
     String idCustomer = matcher.group(2);
-    return new CustomerCourseKey(Long.parseLong(idCourse),Long.parseLong(idCustomer));
+    return new CourseCustomerKey(Long.parseLong(idCourse),Long.parseLong(idCustomer));
   }
 }

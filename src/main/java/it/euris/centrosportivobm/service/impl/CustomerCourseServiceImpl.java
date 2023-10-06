@@ -1,8 +1,7 @@
 package it.euris.centrosportivobm.service.impl;
 
-import it.euris.centrosportivobm.data.dto.CustomerDTO;
 import it.euris.centrosportivobm.data.model.CustomerCourse;
-import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
+import it.euris.centrosportivobm.data.model.key.CourseCustomerKey;
 import it.euris.centrosportivobm.exception.IdMustBeNullException;
 import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.repository.CustomerCourseRepository;
@@ -25,8 +24,9 @@ public class CustomerCourseServiceImpl implements CustomerCourseService {
 
   @Override
   public CustomerCourse insert(CustomerCourse customerCourse) {
-    if (customerCourse.getId() != null){
-      throw new IdMustBeNullException();
+    if (customerCourse.getId().getCourseId() == null ||
+        customerCourse.getId().getCustomerId() == null) {
+      throw new IdMustNotBeNullException();
     }
     return customerCourseRepository.save(customerCourse);
   }
@@ -40,13 +40,13 @@ public class CustomerCourseServiceImpl implements CustomerCourseService {
   }
 
   @Override
-  public Boolean deleteById(CustomerCourseKey idCustomerCourse) {
-    customerCourseRepository.deleteById(idCustomerCourse);
-    return customerCourseRepository.findById(idCustomerCourse).isEmpty();
+  public Boolean deleteById(CourseCustomerKey courseCustomerId) {
+    customerCourseRepository.deleteById(courseCustomerId);
+    return customerCourseRepository.findById(courseCustomerId).isEmpty();
   }
 
   @Override
-  public CustomerCourse findById(CustomerCourseKey idCustomerCourse) {
-    return customerCourseRepository.findById(idCustomerCourse).orElse(CustomerCourse.builder().build());
+  public CustomerCourse findById(CourseCustomerKey courseCustomerId) {
+    return customerCourseRepository.findById(courseCustomerId).orElse(CustomerCourse.builder().build());
   }
 }

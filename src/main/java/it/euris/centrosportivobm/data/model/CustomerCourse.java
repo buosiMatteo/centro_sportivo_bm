@@ -1,9 +1,8 @@
 package it.euris.centrosportivobm.data.model;
 
 import it.euris.centrosportivobm.data.dto.CustomerCourseDTO;
-import it.euris.centrosportivobm.data.dto.archetype.Dto;
 import it.euris.centrosportivobm.data.dto.archetype.Model;
-import it.euris.centrosportivobm.data.model.key.CustomerCourseKey;
+import it.euris.centrosportivobm.data.model.key.CourseCustomerKey;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +19,7 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.customerCours
 public class CustomerCourse implements Model {
 
   @EmbeddedId
-  private CustomerCourseKey id;
+  private CourseCustomerKey id;
 
   @ManyToOne
   @MapsId("courseId")
@@ -39,7 +38,8 @@ public class CustomerCourse implements Model {
   public CustomerCourseDTO toDto() {
     return CustomerCourseDTO
         .builder()
-        .id(customerCourseKeyToString(id))
+        .courseId(course == null ? null : course.getId().toString())
+        .customerId(customer == null ? null : customer.getId().toString())
         .deleted(booleanToString(deleted))
         .build();
   }

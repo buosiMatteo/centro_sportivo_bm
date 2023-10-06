@@ -4,9 +4,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.euris.centrosportivobm.data.dto.CustomerDTO;
 import it.euris.centrosportivobm.data.model.Customer;
+import it.euris.centrosportivobm.exception.IdMustBeNullException;
+import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.service.CustomerService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -20,7 +25,7 @@ public class CustomerController {
 
   @GetMapping("/v1")
   @Operation(description = "This method is used to retrieve all the customers")
-  public List<CustomerDTO> getAllCustomers(){
+  public List<CustomerDTO> getAllCustomers() {
     return customerService.findAll()
         .stream()
         .map(Customer::toDto)
@@ -28,15 +33,26 @@ public class CustomerController {
   }
 
   @PostMapping("/v1")
-  public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO){
-    Customer customer = customerDTO.toModel();
-    return customerService.insert(customer).toDto();
+  public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
+    try {
+      Customer customer = customerDTO.toModel();
+      return customerService.insert(customer).toDto();
+    } catch (IdMustBeNullException e) {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
   }
 
   @PutMapping("/v1")
   public CustomerDTO updateCustomer(@RequestBody CustomerDTO customerDTO) {
-    Customer customer = customerDTO.toModel();
-    return customerService.insert(customer).toDto();
+    try {
+      Customer customer = customerDTO.toModel();
+      return customerService.update(customer).toDto();
+    } catch (IdMustNotBeNullException e) {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, e.getMessage());
+    }
   }
 
   @DeleteMapping("/v1/{id}")
