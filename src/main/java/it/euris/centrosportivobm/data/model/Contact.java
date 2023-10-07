@@ -4,6 +4,8 @@ import it.euris.centrosportivobm.data.dto.ContactDTO;
 import it.euris.centrosportivobm.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
 import static it.euris.centrosportivobm.utility.DataConversionUnit.numberToString;
@@ -15,6 +17,8 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.numberToStrin
 @AllArgsConstructor
 @Entity
 @Table(name = "contact")
+@SQLDelete(sql = "UPDATE contact SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class Contact implements Model {
 
   @Id
@@ -25,8 +29,9 @@ public class Contact implements Model {
   @Column(name = "contact_type")
   private String contactType;
 
+  @Builder.Default
   @Column(name = "deleted")
-  private Boolean deleted;
+  private Boolean deleted = false;
 
   @Column(name = "value")
   private String value;

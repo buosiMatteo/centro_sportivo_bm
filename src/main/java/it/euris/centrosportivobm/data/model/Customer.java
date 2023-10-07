@@ -4,6 +4,8 @@ import it.euris.centrosportivobm.data.dto.CustomerDTO;
 import it.euris.centrosportivobm.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
 
@@ -16,6 +18,8 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "customer")
+@SQLDelete(sql = "UPDATE customer SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class Customer implements Model {
 
   @Id
@@ -26,8 +30,9 @@ public class Customer implements Model {
   @Column(name = "birth_date")
   private LocalDateTime birthDate;
 
+  @Builder.Default
   @Column(name = "deleted")
-  private Boolean deleted;
+  private Boolean deleted = false;
 
   @Column(name = "name")
   private String name;

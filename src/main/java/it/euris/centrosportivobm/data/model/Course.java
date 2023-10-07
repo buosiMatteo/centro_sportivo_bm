@@ -5,6 +5,8 @@ import it.euris.centrosportivobm.data.dto.archetype.Model;
 import it.euris.centrosportivobm.data.enums.SportType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
 
@@ -15,14 +17,17 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "course")
+@SQLDelete(sql = "UPDATE course SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class Course implements Model {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
   private Long id;
 
+  @Builder.Default
   @Column(name = "deleted")
-  private Boolean deleted;
+  private Boolean deleted = false;
 
   @Column(name = "denomination")
   private String denomination;

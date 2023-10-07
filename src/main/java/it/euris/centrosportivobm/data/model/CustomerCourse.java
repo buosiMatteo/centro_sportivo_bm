@@ -5,6 +5,8 @@ import it.euris.centrosportivobm.data.dto.archetype.Model;
 import it.euris.centrosportivobm.data.model.key.CourseCustomerKey;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import static it.euris.centrosportivobm.utility.DataConversionUnit.booleanToString;
 import static it.euris.centrosportivobm.utility.DataConversionUnit.customerCourseKeyToString;
@@ -16,6 +18,8 @@ import static it.euris.centrosportivobm.utility.DataConversionUnit.customerCours
 @AllArgsConstructor
 @Entity
 @Table(name = "customer_course")
+@SQLDelete(sql = "UPDATE customer_course SET deleted = true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class CustomerCourse implements Model {
 
   @EmbeddedId
@@ -31,8 +35,9 @@ public class CustomerCourse implements Model {
   @JoinColumn(name = "customer_id")
   private Customer customer;
 
+  @Builder.Default
   @Column(name = "deleted")
-  private Boolean deleted;
+  private Boolean deleted = false;
 
   @Override
   public CustomerCourseDTO toDto() {
