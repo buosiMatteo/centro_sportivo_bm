@@ -1,6 +1,7 @@
 package it.euris.centrosportivobm.service;
 
 import it.euris.centrosportivobm.data.model.Course;
+import it.euris.centrosportivobm.repository.projection.CourseCountProjection;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ public interface CourseService {
   Boolean deleteById(Long idCourse);
 
   Course findById(Long idCourse);
+
+  CourseCountProjection getCount();
 
 
 }

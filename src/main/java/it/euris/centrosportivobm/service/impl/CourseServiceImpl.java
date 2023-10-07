@@ -4,6 +4,7 @@ import it.euris.centrosportivobm.data.model.Course;
 import it.euris.centrosportivobm.exception.IdMustBeNullException;
 import it.euris.centrosportivobm.exception.IdMustNotBeNullException;
 import it.euris.centrosportivobm.repository.CourseRepository;
+import it.euris.centrosportivobm.repository.projection.CourseCountProjection;
 import it.euris.centrosportivobm.service.CourseService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,11 @@ public class CourseServiceImpl implements CourseService {
   @Override
   public Course findById(Long idCourse) {
     return courseRepository.findById(idCourse).orElse(Course.builder().build());
+  }
+
+  @Override
+  public CourseCountProjection getCount() {
+    return courseRepository.getCount();
   }
 
 }
